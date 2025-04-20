@@ -25,7 +25,7 @@ in {
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
-    zsh starship
+    starship
     neovim
 
     dua
@@ -64,6 +64,7 @@ in {
     #   org.gradle.daemon.idletimeout=3600000
     # '';
     # ".config/nvim".source = symlink configPath + /dotfiles/.config/nvim;
+    ".zshrc".source = symlink configPath + /dotfiles/.config/.zshrc;
   };
 
   # Home Manager can also manage your environment variables through
