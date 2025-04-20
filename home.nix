@@ -25,6 +25,7 @@ in {
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
+    zsh starship
     neovim
 
     dua
@@ -86,5 +87,17 @@ in {
   };
 
   # Let Home Manager install and manage itself.
-  programs.home-manager.enable = true;
+  programs = {
+    home-manager.enable = true;
+    zsh = {
+      enable = true;
+      autosuggestion.enable = true;
+      syntaxHighlighting.enable = true;
+      shellAliases = {
+        v = "nvim";
+        t = "tmux";
+      };
+    };
+    starship.enable = true;
+  };
 }
