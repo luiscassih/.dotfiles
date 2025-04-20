@@ -2,6 +2,8 @@
 
 - home-manager switch --flake .#lain
 
+add `experimental-features = nix-command flakes` to ~/.config/nix/ or /etc/nix/nix.conf) and restart daemon
+
 ## Installing nix and home-manager fedora
 - Install nix determinate installer
 	- https://github.com/DeterminateSystems/nix-installer
