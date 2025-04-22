@@ -26,8 +26,10 @@ in {
   # environment.
   home.packages = with pkgs; [
     starship
+    less
     neovim
 
+    git lazygit
     dua
     vesktop
     firefox
@@ -35,6 +37,7 @@ in {
     fzf bat ripgrep fd jq lf
     luajitPackages.luarocks
     yt-dlp
+    aseprite
 
     # Fonts
     nerd-fonts.monofur
@@ -85,7 +88,8 @@ in {
   #  /etc/profiles/per-user/l/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
-    # EDITOR = "emacs";
+    EDITOR = "nvim";
+    HSA_OVERRIDE_GFX_VERSION=10.3.0;
   };
 
   # Let Home Manager install and manage itself.
@@ -114,10 +118,6 @@ in {
         sv = 'nvim $(s)';
         sudoenv = "sudo -E env PATH=$PATH";
         retab = 'nvim -s <(echo -e "gg=G\n:retab\nZZ")';
-      };
-      sessionVariables = {
-        EDITOR = "nvim";
-        HSA_OVERRIDE_GFX_VERSION=10.3.0;
       };
       initExtra = ''
         bindkey "^[[1;5C" forward-word
