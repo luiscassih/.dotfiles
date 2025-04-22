@@ -113,11 +113,11 @@ in {
         resetsshagent = "killall ssh-agent; eval `ssh-agent`";
         resetwaybar = "killall waybar; hyprctl dispatch exec waybar &";
         data = "cd /mnt/DATA";
-        s = 'rg --files --hidden --glob "!.git" | fzf';
-        sd = 'cd $(s | xargs dirname)';
-        sv = 'nvim $(s)';
+        s = ''rg --files --hidden --glob "!.git" | fzf'';
+        sd = ''cd $(s | xargs dirname)'';
+        sv = ''nvim $(s)'';
         sudoenv = "sudo -E env PATH=$PATH";
-        retab = 'nvim -s <(echo -e "gg=G\n:retab\nZZ")';
+        retab = ''nvim -s <(echo -e "gg=G\n:retab\nZZ")'';
       };
       initExtra = ''
         bindkey "^[[1;5C" forward-word
