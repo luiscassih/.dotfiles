@@ -26,18 +26,35 @@ in {
   # environment.
   home.packages = with pkgs; [
     starship
-    less
     neovim
 
     git lazygit
     dua
+
     vesktop
-    firefox
+    telegram-desktop
+
+    firefox google-chrome
     kitty tmux
     fzf bat ripgrep fd jq lf
+    zsh-fzf-tab
+    tree less
+    p7zip zip unzip
     luajitPackages.luarocks
     yt-dlp
     aseprite
+    audacity
+    spotify
+    cowsay
+    qbittorrent
+
+    #dev
+    tldr
+    pnpm bun
+    rustup
+    python3
+    gcc clang gnumake
+    imagemagick
 
     # Fonts
     nerd-fonts.monofur
@@ -68,7 +85,7 @@ in {
     # '';
     # ".config/nvim".source = symlink configPath + /dotfiles/.config/nvim;
     ".zshrc".source = symlink configPath + /dotfiles/.zshrc;
-    ".config/lf".source = ../../dotfiles/.config/lf;
+    ".config/lf".source = ./dotfiles/lf;
   };
 
   # Home Manager can also manage your environment variables through
@@ -89,7 +106,7 @@ in {
   #
   home.sessionVariables = {
     EDITOR = "nvim";
-    HSA_OVERRIDE_GFX_VERSION=10.3.0;
+    HSA_OVERRIDE_GFX_VERSION="10.3.0";
   };
 
   # Let Home Manager install and manage itself.
@@ -118,11 +135,14 @@ in {
         sv = ''nvim $(s)'';
         sudoenv = "sudo -E env PATH=$PATH";
         retab = ''nvim -s <(echo -e "gg=G\n:retab\nZZ")'';
+        ":q" = "exit";
+        man = "tldr";
       };
       initExtra = ''
         bindkey "^[[1;5C" forward-word
         bindkey "^[[1;5D" backward-word
         source ~/.config/lf/icons
+        source ${pkgs.zsh-fzf-tab}/share/fzf-tab/fzf-tab.plugin.zsh
 
         how() {
           if [ -z "$1" ]; then
@@ -175,6 +195,14 @@ in {
       '';
     };
     starship.enable = true;
+    git = {
+      enable = true;
+      userName = "luisc";
+      userEmail = "luiscassih@gmail.com";
+      extraConfig = {
+        init.defaultBranch = "main";
+      };
+    };
   };
   programs.bash.profileExtra = lib.mkAfter ''
     rm -rf ${config.home.homeDirectory}/.local/share/applications/home-manager
