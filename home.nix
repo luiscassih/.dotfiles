@@ -19,12 +19,14 @@ in {
 
   imports = [
     # ./desktops/hyprland.nix
-    ./desktops/kde.nix
+    # ./desktops/kde.nix
+    ./desktops/gnome.nix
   ];
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
+    yay
     starship
     neovim
 
@@ -53,7 +55,7 @@ in {
     pnpm bun
     rustup
     python3
-    gcc clang gnumake
+    clang gnumake
     imagemagick
 
     # Fonts
@@ -107,6 +109,8 @@ in {
   home.sessionVariables = {
     EDITOR = "nvim";
     HSA_OVERRIDE_GFX_VERSION="10.3.0";
+    LIBGL_ALWAYS_SOFTWARE = "true";
+    GALLIUM_DRIVER = "llvmpipe";
   };
 
   # Let Home Manager install and manage itself.
@@ -115,7 +119,7 @@ in {
     zsh = {
       enable = true;
       dotDir = ".config/zsh";
-      autosuggestion.enable = true;
+      # autosuggestion.enable = true;
       syntaxHighlighting.enable = true;
       shellAliases = {
         v = "nvim";
