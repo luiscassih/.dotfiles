@@ -65,6 +65,7 @@ in {
     # '';
     # ".config/nvim".source = symlink configPath + /dotfiles/.config/nvim;
     ".zshrc".source = symlink configPath + /dotfiles/.zshrc;
+    ".config/lf".source = ../../dotfiles/.config/lf;
   };
 
   # Home Manager can also manage your environment variables through
@@ -92,12 +93,86 @@ in {
     home-manager.enable = true;
     zsh = {
       enable = true;
+      dotDir = ".config/zsh";
       autosuggestion.enable = true;
       syntaxHighlighting.enable = true;
       shellAliases = {
         v = "nvim";
         t = "tmux";
+        so = "source ~/.zshrc";
+        tmuxsource = "tmux source ~/.config/tmux/tmux.conf";
+        ta = "tmux a -t";
+        conf = "ts ~/.config/nvim";
+        # xsc="pbcopy" #mac
+        # xsc="xclip -selection clipboard" #linux
+        # xsc = "wl-copy" #wayland
+        resetsshagent = "killall ssh-agent; eval `ssh-agent`";
+        resetwaybar = "killall waybar; hyprctl dispatch exec waybar &";
+        data = "cd /mnt/DATA";
+        s = 'rg --files --hidden --glob "!.git" | fzf';
+        sd = 'cd $(s | xargs dirname)';
+        sv = 'nvim $(s)';
+        sudoenv = "sudo -E env PATH=$PATH";
+        retab = 'nvim -s <(echo -e "gg=G\n:retab\nZZ")';
       };
+      sessionVariables = {
+        EDITOR = "nvim";
+        HSA_OVERRIDE_GFX_VERSION=10.3.0;
+      };
+      initExtra = ''
+        bindkey "^[[1;5C" forward-word
+        bindkey "^[[1;5D" backward-word
+        source ~/.config/lf/icons
+
+        how() {
+          if [ -z "$1" ]; then
+            echo "No search term provided."
+            return 1
+          fi
+          query=$(printf '%q ' "$@")
+          sgpt --shell "$query"
+        }
+
+        tnew() {
+          if [ -z "$1" ]; then
+            echo "No session name provided."
+            return 1
+          fi
+
+          # Check if tmux session exists
+          if tmux has-session -t $1 2>/dev/null; then
+            echo "Session $1 already exists."
+          else
+            tmux new-session -s $1
+          fi
+        }
+
+        vs() {
+          if [ -f ".vimsession" ]; then
+            nvim -S .vimsession
+          else
+            nvim .
+          fi
+        }
+
+        lt() {
+          tree -I "node_modules" "$@" -C | less -r
+        }
+
+        lfcd () {
+            tmp="$(mktemp)"
+            lf -last-dir-path="$tmp" "$@"
+            if [ -f "$tmp" ]; then
+                dir="$(cat "$tmp")"
+                rm -f "$tmp"
+                if [ -d "$dir" ]; then
+                    if [ "$dir" != "$(pwd)" ]; then
+                        cd "$dir"
+                    fi
+                fi
+            fi
+        }
+      '';
     };
     starship.enable = true;
   };

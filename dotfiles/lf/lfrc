@@ -1,0 +1,7 @@
+set hidden on
+set icons
+
+map ad push %mkdir<space>
+map af push %touch<space>
+map D :delete
+map <c-c> :quit
