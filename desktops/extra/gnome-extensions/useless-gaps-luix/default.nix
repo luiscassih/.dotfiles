@@ -1,7 +1,7 @@
 {
   lib,
   stdenv,
-  fetchFromGitHub,
+  fetchzip,
   gnome-shell,
 }:
 
@@ -9,12 +9,16 @@ stdenv.mkDerivation rec {
   pname = "gnome-shell-extension-useless-gaps-luix";
   version = "19";
 
-  src = fetchFromGitHub {
-    owner = "mipmip";
-    repo = "gnome-shell-extensions-useless-gaps";
-    rev = "v${version}";
-    sha256 = "0000000000000000000000000000000000000000000000000000";
-  };
+  # src = fetchFromGitHub {
+  #   owner = "mipmip";
+  #   repo = "gnome-shell-extensions-useless-gaps";
+  #   rev = "v${version}";
+  #   sha256 = "0000000000000000000000000000000000000000000000000000";
+  # };
+  src = fetchzip {
+    url = "https://extensions.gnome.org/extension-data/useless-gapspimsnel.com.v19.shell-extension.zip";
+    sha256 = "14f3936d0981bfca6d2616b4529b0afe1f6b045dca60e97689aff856d06b17b6"
+  }
 
   passthru = {
     extensionUuid = "useless-gaps@luisc.dev";
