@@ -12,11 +12,28 @@ in {
     places-status-indicator
     tactile
     kimpanel
-    useless-gaps
+    # useless-gaps
+    (callPackage ./extra/gnome-extensions/useless-gaps-luix/default.nix {})
     focus-changer
   ]);
 
   dconf.settings = {
+    "org/gnome/shell" = {
+      enabled-extensions = [
+        "monitor@astraext.github.io"
+        "caffeine@patapon.info"
+        "dash-to-dock@micxgx.gmail.com"
+        "focus-changer@heartmire"
+        "places-menu@gnome-shell-extensions.gcampax.github.com"
+        "drive-menu@gnome-shell-extensions.gcampax.github.com"
+        "screenshot-window-sizer@gnome-shell-extensions.gcampax.github.com"
+        "status-icons@gnome-shell-extensions.gcampax.github.com"
+        "tweaks-in-system-menu@extensions.gnome-shell.fifi.org"
+        "user-theme@gnome-shell-extensions.gcampax.github.com"
+        "tactile@lundal.io"
+        "useless-gaps@luisc.dev"
+      ];
+    };
     "org/gnome/desktop/wm/keybindings" = {
       close = ["<Super>q"];
       toggle-maximized=["<Super>m"];

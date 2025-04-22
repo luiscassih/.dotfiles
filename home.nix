@@ -109,8 +109,8 @@ in {
   home.sessionVariables = {
     EDITOR = "nvim";
     HSA_OVERRIDE_GFX_VERSION="10.3.0";
-    LIBGL_ALWAYS_SOFTWARE = "true";
-    GALLIUM_DRIVER = "llvmpipe";
+    # LIBGL_ALWAYS_SOFTWARE = "true";
+    # GALLIUM_DRIVER = "llvmpipe";
   };
 
   # Let Home Manager install and manage itself.
