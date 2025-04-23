@@ -13,12 +13,13 @@ in {
     tactile
     kimpanel
     # useless-gaps
-    (callPackage ./extra/gnome-extensions/useless-gaps-luix/default.nix {})
+    (callPackage ./extra/gnome-extensions/useless-gaps.nix {})
     focus-changer
   ]);
 
   dconf.settings = {
     "org/gnome/shell" = {
+      disabled-extensions = [];
       enabled-extensions = [
         "monitor@astraext.github.io"
         "caffeine@patapon.info"
@@ -31,7 +32,7 @@ in {
         "tweaks-in-system-menu@extensions.gnome-shell.fifi.org"
         "user-theme@gnome-shell-extensions.gcampax.github.com"
         "tactile@lundal.io"
-        "useless-gaps@luisc.dev"
+        "useless-gaps@pimsnel.com"
       ];
     };
     "org/gnome/desktop/wm/keybindings" = {
@@ -58,6 +59,10 @@ in {
     };
     "org/gnome/shell/extensions/dash-to-dock" = {
       hot-keys = false;
+    };
+    "org/gnome/shell/extensions/useless-gaps" = {
+      gap-size=15;
+      no-gap-when-maximized=false;
     };
     "org/gnome/settings-daemon/plugins/media-keys" = {
       custom-keybindings=["/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"];

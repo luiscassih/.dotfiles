@@ -1,12 +1,14 @@
 {
+  pkgs,
   lib,
   stdenv,
   fetchzip,
   gnome-shell,
+  nixosTests,
 }:
 
 stdenv.mkDerivation rec {
-  pname = "gnome-shell-extension-useless-gaps-luix";
+  pname = "gnome-shell-extension-useless-gaps";
   version = "19";
 
   # src = fetchFromGitHub {
@@ -17,18 +19,24 @@ stdenv.mkDerivation rec {
   # };
   src = fetchzip {
     url = "https://extensions.gnome.org/extension-data/useless-gapspimsnel.com.v19.shell-extension.zip";
-    sha256 = "14f3936d0981bfca6d2616b4529b0afe1f6b045dca60e97689aff856d06b17b6"
-  }
-
-  passthru = {
-    extensionUuid = "useless-gaps@luisc.dev";
-    extensionPortalSlug = "useless-gaps";
+    sha256 = "FLSVajOheBbb2DJ5ZWKgyKmOUoIy0vVfX80EsPyva9I=";
+    stripRoot = false;
   };
+
+  nativeBuildInputs = with pkgs; [ buildPackages.glib ];
+
+  buildPhase = ''
+    runHook preBuild
+    if [ -d schemas ]; then
+      glib-compile-schemas --strict schemas
+    fi
+    runHook postBuild
+  '';
 
   installPhase = ''
     runHook preInstall
     mkdir -p $out/share/gnome-shell/extensions
-    cp -r "useless-gaps@luisc.dev" $out/share/gnome-shell/extensions
+    cp -r -T . $out/share/gnome-shell/extensions/useless-gaps@pimsnel.com
     runHook postInstall
   '';
 
@@ -37,5 +45,13 @@ stdenv.mkDerivation rec {
     license = licenses.gpl3;
     maintainers = with maintainers; [ ];
     homepage = "https://github.com/mipmip/gnome-shell-extension-useless-gaps";
+  };
+
+  passthru = {
+    extensionUuid = "useless-gaps@pimsnel.com";
+    extensionPortalSlug = "useless-gaps";
+    tests = {
+      gnome-extensions = nixosTests.gnome-extensions;
+    };
   };
 }

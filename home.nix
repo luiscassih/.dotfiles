@@ -122,6 +122,7 @@ in {
       # autosuggestion.enable = true;
       syntaxHighlighting.enable = true;
       shellAliases = {
+        ll = "ls -lah";
         v = "nvim";
         t = "tmux";
         so = "source ~/.zshrc";
