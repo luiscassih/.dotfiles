@@ -3,6 +3,7 @@ let
 in {
   home.packages = with pkgs; [
     gnome-tweaks
+    whitesur-gtk-theme
   ] ++ (with gnomeExtensions; [
     tweaks-in-system-menu
     caffeine
@@ -94,6 +95,7 @@ in {
       col-1=1;
       col-2=0;
       col-3=0;
+      gap-size=15;
       grid-cols=2;
       grid-rows=2;
       show-tiles=["<Super>a"];
