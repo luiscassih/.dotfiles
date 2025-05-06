@@ -49,17 +49,21 @@ in {
     spotify
     cowsay
     qbittorrent
+    vlc
 
     #dev
+    blender
     tldr
     pnpm bun
     rustup
     python3
     clang gnumake
     imagemagick
+    ollama-rocm
 
     # Fonts
     nerd-fonts.monofur
+    nerd-fonts.victor-mono
     roboto
     hack-font
     liberation_ttf
