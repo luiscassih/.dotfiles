@@ -61,6 +61,7 @@ in {
     imagemagick
     tectonic
     mermaid-cli
+    tree-sitter
     sqlite
     # ollama-rocm
 

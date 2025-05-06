@@ -1,5 +1,5 @@
 return {
-  "luiscassih/AniMotion",
+  "luiscassih/AniMotion.nvim",
   -- dir = "~/dev/AniMotion/",
   enabled = true,
   event = "VeryLazy",
