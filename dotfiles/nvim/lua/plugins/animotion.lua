@@ -1,5 +1,5 @@
 return {
-  "luiscassih/AniKakoune",
+  "luiscassih/AniMotion",
   -- dir = "~/dev/AniMotion/",
   enabled = true,
   event = "VeryLazy",

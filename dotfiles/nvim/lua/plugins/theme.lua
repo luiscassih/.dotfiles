@@ -1,4 +1,4 @@
-local theme = require("lua.themes.nightfall")
+local theme = require("themes.nightfall")
 return {
   theme,
 }

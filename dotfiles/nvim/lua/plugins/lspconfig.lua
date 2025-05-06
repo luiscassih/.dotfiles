@@ -19,7 +19,7 @@ return {
       csharp_ls = {
         cmd = { "csharp-ls" },
         filetypes = { "cs", "razor", "csproj", "fs", "fsproj" },
-        root_dir = require("lspconfig").util.root_pattern("*.sln", "*.csproj", "packages.config"),
+        -- root_dir = require("lspconfig").util.root_pattern("*.sln", "*.csproj", "packages.config"),
       },
       ts_ls = {},
       tailwindcss = {
@@ -54,6 +54,8 @@ return {
       vim.keymap.set("n", "<leader>R", ":LspRestart<CR>", attach_opts)
       vim.keymap.set({"n", "v"}, "<leader>f", vim.lsp.buf.format)
     end
+
+    opts.servers.csharp_ls.root_dir = lspconfig.util.root_pattern("*.sln", "*.csproj", "packages.config")
 
     for server, config in pairs(opts.servers) do
       -- passing config.capabilities to blink.cmp merges with the capabilities in your

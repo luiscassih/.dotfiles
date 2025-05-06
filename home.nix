@@ -59,6 +59,9 @@ in {
     python3
     clang gnumake
     imagemagick
+    tectonic
+    mermaid-cli
+    sqlite
     # ollama-rocm
 
     # Fonts

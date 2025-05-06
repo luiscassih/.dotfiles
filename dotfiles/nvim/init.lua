@@ -1,2 +1,2 @@
 require("core")
-require("lua.lazy-init")
+require("lazy-init")
