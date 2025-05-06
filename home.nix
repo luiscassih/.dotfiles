@@ -52,14 +52,14 @@ in {
     vlc
 
     #dev
-    blender
+    # blender
     tldr
     pnpm bun
     rustup
     python3
     clang gnumake
     imagemagick
-    ollama-rocm
+    # ollama-rocm
 
     # Fonts
     nerd-fonts.monofur
@@ -89,7 +89,7 @@ in {
     #   org.gradle.console=verbose
     #   org.gradle.daemon.idletimeout=3600000
     # '';
-    # ".config/nvim".source = symlink configPath + /dotfiles/.config/nvim;
+    ".config/nvim".source = symlink configPath + /dotfiles/nvim;
     ".zshrc".source = symlink configPath + /dotfiles/.zshrc;
     ".config/lf".source = ./dotfiles/lf;
   };

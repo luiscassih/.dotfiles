@@ -1,1 +1,1 @@
-require("qfitems")
+require("custom.qfitems")

@@ -1,4 +1,4 @@
-require("mappings")
-require("options")
+require("core.mappings")
+require("core.options")
 require("custom")
 
