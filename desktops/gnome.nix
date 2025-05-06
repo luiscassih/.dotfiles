@@ -109,5 +109,9 @@ in {
     "org/freedesktop/ibus/engine/anthy/common" = {
       input-mode=0;
     };
+    "org/gnome/Console" = {
+      custom-font="Hack 14";
+      use-system-font=false;
+    };
   };
 }

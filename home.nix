@@ -50,6 +50,7 @@ in {
     cowsay
     qbittorrent
     vlc
+    obsidian
 
     #dev
     # blender
