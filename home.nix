@@ -53,9 +53,11 @@ in {
 
     #dev
     # blender
+    nodejs_23
     tldr
     pnpm bun
     rustup
+    go
     python3
     clang gnumake
     imagemagick

@@ -29,7 +29,7 @@ return {
         ClangdSwitchSourceHeader = true,
       },
       ols = {},
-      ruff_lsp = {},
+      ruff = {},
       golangci_lint_ls = {},
       emmet_ls = {},
     }
