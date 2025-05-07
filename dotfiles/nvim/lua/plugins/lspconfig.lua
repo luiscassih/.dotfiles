@@ -38,16 +38,22 @@ return {
     local lspconfig = require('lspconfig')
 
     local on_attach = function(_, bufnr)
+      local setopts = function(o)
+        o = o or {}
+        o.buffer = bufnr
+        o.remap = false
+        return o
+      end
       -- vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, attach_opts)
-      vim.keymap.set("n", "gs", function() vim.cmd("vsplit"); vim.lsp.buf.definition() end, { desc = "Split Definition", buffer = bufnr, remap = false })
-      vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, { desc = "Hover", buffer = bufnr, remap = false })
+      vim.keymap.set("n", "gs", function() vim.cmd("vsplit"); vim.lsp.buf.definition() end, setopts({ desc = "Split Definition" }))
+      vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, setopts({ desc = "Hover" }))
       -- vim.keymap.set("n", "<leader>lws", function() vim.lsp.buf.workspace_symbol() end, opts)
-      vim.keymap.set("n", "<leader>ld", function() vim.diagnostic.open_float() end, { desc = "Line Diagnostics", buffer = bufnr, remap = false })
-      vim.keymap.set("n", "]d", function() vim.diagnostic.goto_next() end, { desc = "Next Diagnostic", buffer = bufnr, remap = false })
-      vim.keymap.set("n", "[d", function() vim.diagnostic.goto_prev() end, { desc = "Previous Diagnostic", buffer = bufnr, remap = false })
-      vim.keymap.set({ 'v', 'n' }, "<leader>la", function() vim.lsp.buf.code_action() end, { desc = "Code Action", buffer = bufnr, remap = false })
+      vim.keymap.set("n", "<leader>ld", function() vim.diagnostic.open_float() end, setopts({ desc = "Line Diagnostics" }))
+      vim.keymap.set("n", "]d", function() vim.diagnostic.goto_next() end, setopts({ desc = "Next Diagnostic" }))
+      vim.keymap.set("n", "[d", function() vim.diagnostic.goto_prev() end, setopts({ desc = "Previous Diagnostic" }))
+      vim.keymap.set({ 'v', 'n' }, "<leader>la", function() vim.lsp.buf.code_action() end, setopts({ desc = "Code Action" }))
       -- vim.keymap.set("n", "<leader>lr", function() vim.lsp.buf.references() end, opts)
-      vim.keymap.set("n", "<leader>lR", function() vim.lsp.buf.rename() end, { desc = "Rename", buffer = bufnr, remap = false })
+      vim.keymap.set("n", "<leader>lR", function() vim.lsp.buf.rename() end, setopts({ desc = "Rename" }))
       -- vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
       -- vim.keymap.set("n", "<leader>R", ":LspRestart<CR>", opts)
       -- vim.keymap.set({"n", "v"}, "<leader>f", vim.lsp.buf.format)

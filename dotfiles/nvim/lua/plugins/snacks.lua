@@ -1,3 +1,4 @@
+---@diagnostic disable: undefined-global
 return {
   "folke/snacks.nvim",
   priority = 1000,
@@ -65,11 +66,13 @@ return {
     { "<c-f>", function() Snacks.picker.grep() end, desc = "Grep", },
     { "<leader>:", function() Snacks.picker.command_history() end, desc = "Command History", },
     { "<c-p>", function() Snacks.picker.buffers() end, desc = "Buffers" },
-    { "<leader>pg", function() Snacks.picker.git_files() end, desc = "Find Git Files" },
-    { "<leader>fp", function() Snacks.picker.projects() end, desc = "Projects" },
-    { "<leader>fr", function() Snacks.picker.recent() end, desc = "Recent" },
+    { "<leader>pb", function() Snacks.picker.buffers() end, desc = "Buffers" },
+    { "<leader>pg", function() Snacks.picker.git_files() end, desc = "Git Files" },
+    { "<leader>pp", function() Snacks.picker.projects() end, desc = "Projects" },
+    { "<leader>pr", function() Snacks.picker.recent() end, desc = "Recent" },
      -- git
     { "<leader>gb", function() Snacks.picker.git_branches() end, desc = "Git Branches" },
+    { "<leader>gB", function() Snacks.git.blame_line() end, desc = "Git Blame Line" },
     { "<leader>gl", function() Snacks.picker.git_log() end, desc = "Git Log" },
     { "<leader>gL", function() Snacks.picker.git_log_line() end, desc = "Git Log Line" },
     { "<leader>gs", function() Snacks.picker.git_status() end, desc = "Git Status" },
