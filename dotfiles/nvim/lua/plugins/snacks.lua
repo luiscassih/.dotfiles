@@ -116,5 +116,6 @@ return {
     { "<leader>sS", function() Snacks.picker.lsp_workspace_symbols() end, desc = "LSP Workspace Symbols" },
     -- others
     { "<leader>lg", function() Snacks.lazygit() end, desc = "Lazygit" },
+    { "<leader>t", function() Snacks.terminal.toggle() end, desc = "Toggle Terminal" },
   },
 }

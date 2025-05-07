@@ -97,6 +97,7 @@ in {
     #   org.gradle.daemon.idletimeout=3600000
     # '';
     ".config/nvim".source = symlink configPath + /dotfiles/nvim;
+    ".config/tmux".source = symlink configPath + /dotfiles/tmux;
     ".zshrc".source = symlink configPath + /dotfiles/.zshrc;
     ".config/lf".source = ./dotfiles/lf;
   };
