@@ -36,6 +36,9 @@ in {
         "useless-gaps@pimsnel.com"
       ];
     };
+    "org/gnome/desktop/wm/preferences" = {
+      button-layout="close,maximize,minimize:appmenu";
+    };
     "org/gnome/desktop/wm/keybindings" = {
       close = ["<Super>q"];
       toggle-maximized=["<Super>m"];
@@ -70,6 +73,9 @@ in {
       home=["<Super>t"];
       magnifier=["<Super>z"];
       screensaver=[""];
+    };
+    "org/gnome/mutter" = {
+      auto-maximized=false;
     };
     "org/gnome/mutter/keybindings" = {
       toggle-tiled-left=["<Shift><Super>h"];

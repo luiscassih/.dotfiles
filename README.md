@@ -24,6 +24,10 @@ add `experimental-features = nix-command flakes` to ~/.config/nix/ or /etc/nix/n
 - nix-shell '<home-manager>' -A install
 
 
+## Install TPM for tmux
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+
 ### Resources
 - https://wiki.archlinux.org/title/Nix
 - https://nix-community.github.io/home-manager/index.xhtml#sec-install-standalone

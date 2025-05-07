@@ -23,6 +23,12 @@ if [ "$INSTALL" = true ]; then
   nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager 
   nix-channel --update
   nix-shell '<home-manager>' -A install
+  if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
+    echo "Installing TPM (Tmux Plugin Manager)..."
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+  else
+    echo "TPM is already installed"
+  fi
 fi
 
 if [ "$APPLY" = true ]; then

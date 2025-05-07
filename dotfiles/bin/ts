@@ -1,0 +1,56 @@
+#!/usr/bin/env bash
+
+# Development directories (will find subdirectories)
+dev_dirs=(
+  "~/dev"
+  "/mnt/DATA/dev"
+)
+
+# Individual directories (added directly)
+individual_dirs=(
+  "/home/l/.dotfiles"
+  "/home/l/.config/nvim"
+  "/mnt/DATA/Videos"
+  "/home/l/Obsidian"
+)
+
+build_dir_list() {
+  for dir in "${dev_dirs[@]}"; do
+    eval find "$dir" -mindepth 1 -maxdepth 1 -type d 2>/dev/null
+  done
+
+  for dir in "${individual_dirs[@]}"; do
+    echo "$dir"
+  done
+}
+
+if [[ $# -eq 1 ]]; then
+  selected=$1
+else
+  selected=$(build_dir_list | fzf)
+fi
+
+if [[ -z $selected ]]; then
+  exit 0
+fi
+
+selected_name=$(basename "$selected" | tr . _)
+tmux_running=$(pgrep tmux)
+session_exists() {
+  tmux has-session -t=$selected_name 2> /dev/null
+}
+
+if [[ -z $TMUX ]]; then
+  # not in tmux
+  if ! session_exists; then
+    tmux new-session -s $selected_name -c $selected
+  else
+    tmux attach -t $selected_name
+  fi
+else
+  if ! session_exists; then
+    # create detached to prevent nesting
+    tmux new-session -ds $selected_name -c $selected
+  fi
+  tmux switch-client -t $selected_name
+fi
