@@ -1,8 +1,11 @@
 return {
-  "williamboman/mason.nvim",
+  "mason-org/mason.nvim",
   dependencies = {
-    "williamboman/mason-lspconfig.nvim",
-    -- "jay-babu/mason-nvim-dap.nvim",
+    "mason-org/mason-lspconfig.nvim",
+    "neovim/nvim-lspconfig",
+  },
+  keys = {
+    { "K", function() vim.lsp.buf.hover() end, desc = "Hover", },
   },
   config = function()
     local mason = require("mason")
@@ -21,6 +24,7 @@ return {
         'golangci_lint_ls',
         'tailwindcss',
         'emmet_ls',
+        'ols',
       },
     })
   end
