@@ -38,6 +38,7 @@ in {
 
     firefox google-chrome
     kitty tmux
+    btop
     fzf bat ripgrep fd jq lf
     zsh-fzf-tab
     tree less
@@ -54,6 +55,7 @@ in {
 
     #dev
     # blender
+    # jetbrains.rider
     nodejs_23
     tldr
     pnpm bun
@@ -71,8 +73,8 @@ in {
     # Fonts
     nerd-fonts.monofur
     nerd-fonts.victor-mono
+    nerd-fonts.hack
     roboto
-    hack-font
     liberation_ttf
     noto-fonts-cjk-sans
     noto-fonts-cjk-serif
@@ -98,6 +100,7 @@ in {
     # '';
     ".config/nvim".source = symlink configPath + /dotfiles/nvim;
     ".config/tmux".source = symlink configPath + /dotfiles/tmux;
+    ".config/kitty".source = symlink configPath + /dotfiles/kitty;
     ".zshrc".source = symlink configPath + /dotfiles/.zshrc;
     ".config/lf".source = ./dotfiles/lf;
   };

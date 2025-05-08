@@ -47,7 +47,7 @@ return {
 
     -- (Default) Only show the documentation popup when manually triggered
     completion = {
-      documentation = { auto_show = false },
+      documentation = { auto_show = true },
       list = {
         selection = {
           preselect = false,
@@ -67,7 +67,9 @@ return {
     -- when the Rust fuzzy matcher is not available, by using `implementation = "prefer_rust"`
     --
     -- See the fuzzy documentation for more information
-    fuzzy = { implementation = "prefer_rust_with_warning" }
+    fuzzy = { implementation = "prefer_rust_with_warning" },
+
+    signature =  { enabled = true },
   },
   opts_extend = { "sources.default" }
 }
